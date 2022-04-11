@@ -12,5 +12,6 @@ namespace Business.Abstract
     public interface IProductService : IEntityService<Product>
     {
         IDataResult<List<Product>> GetListByCategory(int categoryId);
+        IResult TransactionalOperation(Product product);
     }
 }

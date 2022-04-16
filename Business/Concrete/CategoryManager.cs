@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Core.Aspects.Autofac.Caching;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
@@ -21,6 +22,8 @@ namespace Business.Concrete
         {
             _categoryDal = categoryDal;
         }
+
+        [CacheRemoveAspect("ICategoryService.Get")]
         public IResult Add(Category entity)
         {
             _categoryDal.Add(entity);
@@ -33,11 +36,13 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CategoryDeleted);
         }
 
+        [CacheAspect(duration: 10)]
         public IDataResult<Category> GetById(int id)
         {
             return new SuccessDataResult<Category>(_categoryDal.Get(x => x.CategoryId == id));
         }
 
+        [CacheAspect(duration: 10)]
         public IDataResult<List<Category>> GetList()
         {
             return new SuccessDataResult<List<Category>>(_categoryDal.GetList().ToList());

@@ -18,7 +18,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getlist")]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public IActionResult GetList()
         {
             var result = _productService.GetList();

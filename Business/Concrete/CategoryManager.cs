@@ -2,7 +2,9 @@
 using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Logging;
 using Core.Aspects.Autofac.Performance;
+using Core.CrossCuttingConcerns.Logging.Log4Net.Loggers;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
@@ -39,8 +41,9 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CategoryDeleted);
         }
 
-        [SecuredOperation("Category.List,Admin")]
+        //[SecuredOperation("Category.List,Admin")]
         [CacheAspect(duration: 10)]
+        [LogAspect(typeof(FileLogger))]
         public IDataResult<Category> GetById(int id)
         {
             return new SuccessDataResult<Category>(_categoryDal.Get(x => x.CategoryId == id));

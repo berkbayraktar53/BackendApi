@@ -13,4 +13,6 @@
 - AOP - Caching implementasyonu
 - AOP - Authorization
 - AOP - Performance Aspect
-- AOP - Log Aspect
+- AOP - Log Aspect (Log4Net)
+- AOP - Exception Log Aspect
+- Exception Handling implementasyonu

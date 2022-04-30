@@ -11,3 +11,6 @@
 - AOP - Transaction implementasyonu
 - Service Collection Extension yazımı
 - AOP - Caching implementasyonu
+- AOP - Authorization
+- AOP - Performance Aspect
+- AOP - Log Aspect

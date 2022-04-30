@@ -42,8 +42,8 @@ namespace Business.Concrete
         }
 
         //[SecuredOperation("Category.List,Admin")]
-        [CacheAspect(duration: 10)]
-        [LogAspect(typeof(FileLogger))]
+        [LogAspect(typeof(DatabaseLogger))]
+        [CacheAspect(duration: 10)]        
         public IDataResult<Category> GetById(int id)
         {
             return new SuccessDataResult<Category>(_categoryDal.Get(x => x.CategoryId == id));
@@ -51,6 +51,7 @@ namespace Business.Concrete
 
         //[SecuredOperation("Category.List,Admin")]
         //[CacheAspect(duration: 10)]
+        [LogAspect(typeof(DatabaseLogger))]
         [PerformanceAspect(interval: 5)]
         public IDataResult<List<Category>> GetList()
         {

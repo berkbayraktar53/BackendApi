@@ -13,7 +13,7 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=.;Database=Northwind;Trusted_Connection=true");
+            optionsBuilder.UseSqlServer("Server=LAPTOP-38ONNKBV;Database=Northwind;Trusted_Connection=true");
         }
 
         public DbSet<Category> Categories { get; set; }
